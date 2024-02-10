@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+double cubeRoot(double num) {
+    double start = 0, end = num, mid, epsilon = 0.0001;
+    while (true) {
+        mid = (start + end) / 2;
+        double cube = mid * mid * mid;
+		 if (cube >= num - epsilon && cube <= num + epsilon)
+            return mid;
+        if (cube < num)
+            start = mid;
+        else
+            end = mid;
+    }
+}
+
+int main() {
+    double number;
+    cout << "Enter a number: ";
+    cin >> number;
+    double cubeRootValue = cubeRoot(number);
+
+    cout << "Cube root of " << number << " is: " << cubeRootValue << endl;
+
+    return 0;
+}
